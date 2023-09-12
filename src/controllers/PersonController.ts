@@ -49,7 +49,17 @@ export class PersonController {
    * @returns Person
    */
   public static getPerson = async (req: Request, res: Response) => {
-  
+    try {
+      const person = await AppDataSource.getRepository(Person).findOneBy({ id: parseInt(req.params.id) })
+
+      if (!person) {
+        return res.status(404).json({ message: "Person not found" })
+      }
+      return res.status(200).json(person)
+
+    } catch (error) {
+      return res.status(500).json({ error: "An error occured while retrieving person" })
+    }
   }
 
   /**
