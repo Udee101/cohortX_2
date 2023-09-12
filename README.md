@@ -1,10 +1,10 @@
-# HNGX Task 2 - TypeORM, Express, and PostgreSQL CRUD API
+# HNGX Task 2 - CRUD API
 
 This repository contains a simple CRUD API built using TypeORM, Express.js, and PostgreSQL.
 
 ## Steps to run this project locally:
 ### Prerequisites
-Ensure you have the following installed on your system
+Ensure you have the following installed on your system.
 - Node.js: [Download and Install Node.js](https://node.js.org)
 - PostgreSQL: [Download and Install PostgreSQL](https://www.postgresql.org/download)
 
