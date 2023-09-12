@@ -24,7 +24,7 @@ Ensure you have the following installed on your system
     ```
 
 ### Database Configuraton
-1. Create a PostgreSQL database for this project. You can do this using the command-line/terminal 'psql' utility or PostgreSQL GUI tool '[pgAdmin](https://www.pgadmin.org/download/)'
+1. Create a PostgreSQL database for this project. You can do this using the command-line/terminal `psql` utility or PostgreSQL GUI tool - [pgAdmin](https://www.pgadmin.org/download/)
 
 2. Create a `.env` file from `.env.example` file, for your database configuration:
     ```bash
@@ -51,6 +51,6 @@ The API will be available at **`http://localhost:8000`**. You can change the por
 ### API Endpoints
 The API provides the following CRUD endpoints:
 - **`POST /api/`**: Create a new Person.
-- **`GET /api/id`**: Retrieve a Person by ID.
-- **`PUT /api/id`**: Update an existing Person.
-- **`DELETE /api/id`**: Delete a Person by ID.
+- **`GET /api/:id`**: Retrieve a Person by ID.
+- **`PUT /api/:id`**: Update an existing Person.
+- **`DELETE /api/:id`**: Delete a Person by ID.
