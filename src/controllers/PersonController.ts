@@ -104,6 +104,18 @@ export class PersonController {
    * @returns void
    */
   public static deletePerson = async (req: Request, res: Response) => {
-  
+     try {
+      const personRepository = AppDataSource.getRepository(Person)
+      const person = await personRepository.findOneBy({ id: parseInt(req.params.id) })
+      if (!person) {
+        return res.status(404).json({ message: "Person not found" })
+      }
+      
+      await personRepository.remove(person)
+      return res.status(200).json({ message: "Person Deleted!" })
+
+    } catch (error) {
+      return res.status(500).json({ error: "An error occured while deleting person" })
+    }
   }
 }
