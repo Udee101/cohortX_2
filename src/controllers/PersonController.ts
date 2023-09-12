@@ -69,7 +69,32 @@ export class PersonController {
    * @returns Person
    */
   public static updatePerson = async (req: Request, res: Response) => {
-  
+    try {
+      const person = await AppDataSource.getRepository(Person).findOneBy({ id: parseInt(req.params.id) })
+
+      const name = req.body.name as string
+
+      if (!person) {
+        return res.status(404).json({ message: "Person not found" })
+      }
+
+      if (!name) return res.status(200).json(person)
+
+      if (typeof name !== "string"){
+        return res.status(400).json({ message: "This field can only take string as value." })
+      }
+      
+      AppDataSource.getRepository(Person).merge(person, req.body)
+      const updatedPerson = await AppDataSource.getRepository(Person).save(person)
+
+      return res.status(200).json({
+        message: "Person Updated!",
+        person: updatedPerson
+      })
+
+    } catch (error) {
+      return res.status(500).json({ error: "An error occured while updating person" })
+    }
   }
 
   /**
