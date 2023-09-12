@@ -36,7 +36,8 @@ Ensure you have the following installed on your system
     NODE_ENV=development
 
     DB_HOST=localhost
-    DB_DATABASE=your-database   DB_USERNAME=your-username
+    DB_DATABASE=your-database 
+    DB_USERNAME=your-username
     DB_PASSWORD=your-password
     ```
 
