@@ -6,6 +6,9 @@ export class Person {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({ 
+        nullable: false, 
+        unique: true,
+    })
     name: string
 }
