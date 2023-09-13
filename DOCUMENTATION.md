@@ -228,6 +228,6 @@ This endpoint deletes a person by its `id`.
   - **Response Body:** 
   ```json
     {
-      "error": "An error occured while retrieving person."
+      "error": "An error occured while deleting person."
     }
   ```
