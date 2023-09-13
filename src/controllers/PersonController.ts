@@ -16,14 +16,6 @@ export class PersonController {
       const personRepository = AppDataSource.getRepository(Person)
       const name = req.body.name as string 
 
-      if (!name) {
-        return res.status(400).json({ message: "name field is required." })
-      }
-
-      if (typeof name !== "string") {
-        return res.status(400).json({ message: "This field can only take string as value." })
-      }
-
       if (await personRepository.findOneBy({ name: name })) {
         return res.status(400).json({ message: "This person already exists." })
       }
@@ -78,10 +70,8 @@ export class PersonController {
         return res.status(404).json({ message: "Person not found" })
       }
 
-      if (!name) return res.status(200).json(person)
-
-      if (typeof name !== "string"){
-        return res.status(400).json({ message: "This field can only take string as value." })
+      if (!name) {
+        return res.status(200).json(person)
       }
       
       AppDataSource.getRepository(Person).merge(person, req.body)
