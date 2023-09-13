@@ -9,7 +9,7 @@ The UML class diagram for the "Person" model provides a visual representation of
 
 ###
 ## Base URL
-The base URL for all endpoints is `http://localhost:8000`
+The base URL for all endpoints is `https://shy-blue-pangolin-fez.cyclic.app`
 
 
 ## Authentication
@@ -83,7 +83,7 @@ Create a new `Person` by passing a `name` key value pair in the request body.
 
 ### 1. Get a Person
 This endpoint retrieves a person by its `id`.
-- **URL: `/api/:id`**
+- **URL: `/api/:id` eg `/api/1`** 
 - **Method: `GET`**
 - **URL Parameters:**
   - **`id`**_(integer)_: The unique identifier of the person.
@@ -131,7 +131,7 @@ This endpoint retrieves a person by its `id`.
 
 ### 1. Update a Person
 This endpoint retrieves a person by its `id` and updates the person's name by passing a `name` key value pair in the request body.
-- **URL: `/api/:id`**
+- **URL: `/api/:id` eg `/api/1`**
 - **Method: `PUT`**
 - **URL Parameters:**
   - **`id`**_(integer)_: The unique identifier of the person.
@@ -188,7 +188,7 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
 
 ### 1. Delete a Person
 This endpoint deletes a person by its `id`.
-- **URL: `/api/:id`**
+- **URL: `/api/:id` eg `/api/1`**
 - **Method: `DELETE`**
 - **URL Parameters:**
   - **`id`**_(integer)_: The unique identifier of the person.
@@ -231,3 +231,9 @@ This endpoint deletes a person by its `id`.
       "error": "An error occured while deleting person."
     }
   ```
+
+## Limitation & Assumption
+This version of the API does not inclued authentication and authorization. There are no user roles, access controls, or user authentication. Access to the API endpoints is open to all clients.
+
+### Assumption
+I assumed that there should not be two or more people with the same names, so I added unique name validation while creating a person.
