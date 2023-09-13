@@ -2,6 +2,8 @@
 
 This repository contains a simple CRUD API built using TypeORM, Express.js, and PostgreSQL.
 
+[See API Documentation](https://github.com/Udee101/cohortX_2/blob/main/DOCUMENTATION.md)
+
 ## Steps to run this project locally:
 ### Prerequisites
 Ensure you have the following installed on your system.
