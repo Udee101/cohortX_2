@@ -22,9 +22,9 @@
       "typeorm": "0.3.17"
    },
    "scripts": {
-      "build": "npm install && tsc",
+      "build": "tsc",
       "dev": "nodemon",
-      "start": "node build/index.js",
+      "start": "ts-node src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
 }
