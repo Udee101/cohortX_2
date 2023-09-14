@@ -62,7 +62,9 @@ export class PersonController {
    */
   public static updatePerson = async (req: Request, res: Response) => {
     try {
-      const person = await AppDataSource.getRepository(Person).findOneBy({ id: parseInt(req.params.id) })
+      const personRepository = AppDataSource.getRepository(Person)
+
+      const person = await personRepository.findOneBy({ id: parseInt(req.params.id) })
 
       const name = req.body.name as string
 
@@ -72,6 +74,10 @@ export class PersonController {
 
       if (!name) {
         return res.status(200).json(person)
+      }
+
+      if (await personRepository.findOneBy({ name: name })) {
+        return res.status(400).json({ message: "Unable to update person. This name has already been taken." })
       }
       
       AppDataSource.getRepository(Person).merge(person, req.body)
