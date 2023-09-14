@@ -1,6 +1,6 @@
 import { Request, Response,NextFunction } from "express";
 import { body, param, validationResult } from "express-validator";
-import { PersonModel } from "../models/PersonModel";
+import { PersonModel } from "../models/Person/PersonModel";
 
 export const ValidateRequestBody = (req: Request, res: Response, next: NextFunction) => {
   const {name, ...rest} = req.body as PersonModel
@@ -13,7 +13,7 @@ export const ValidateRequestBody = (req: Request, res: Response, next: NextFunct
 export const validateRequest = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    return res.status(400).json(errors)
+    return res.status(400).json({ error: errors.array() })
   }
   next()
 }
