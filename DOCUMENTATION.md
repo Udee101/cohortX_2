@@ -39,6 +39,8 @@ Create a new `Person` by passing a `name` key value pair in the request body.
       }
     }
   ```
+####
+
 - **Error Responses**
   - **Status Code: `400 Bad Request`**
   - **Response Body:** 
@@ -73,6 +75,13 @@ Create a new `Person` by passing a `name` key value pair in the request body.
       "message": "This person already exists" //passed a name that already exists in the db
     }
   ```
+  - **Status Code: `400 Bad Request`**
+  - **Response Body:** 
+  ```json
+    {
+      "error": "Unexpected properties in the request body" //passed other properties along with/without the name key value pair
+    }
+  ```
   - **Status Code: `500 Internal Server Error`**
   - **Response Body:** 
   ```json
@@ -81,7 +90,7 @@ Create a new `Person` by passing a `name` key value pair in the request body.
     }
   ```
 
-### 1. Get a Person
+### 2. Get a Person
 This endpoint retrieves a person by its `id`.
 - **URL: `/api/:id` eg `/api/1`** 
 - **Method: `GET`**
@@ -97,6 +106,7 @@ This endpoint retrieves a person by its `id`.
       "name": "Elon Musk"
     }
   ```
+####
 
 - **Error Responses**
   - **Status Code: `400 Bad Request`**
@@ -129,7 +139,7 @@ This endpoint retrieves a person by its `id`.
     }
   ```
 
-### 1. Update a Person
+### 3. Update a Person
 This endpoint retrieves a person by its `id` and updates the person's name by passing a `name` key value pair in the request body.
 - **URL: `/api/:id` eg `/api/1`**
 - **Method: `PUT`**
@@ -153,6 +163,7 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
       }
     }
   ```
+####
 
 - **Error Responses**
   - **Status Code: `400 Bad Request`**
@@ -177,6 +188,13 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
       "message": "Person not found" //passed an id that is not present in the db
     }
   ```
+  - **Status Code: `400 Bad Request`**
+  - **Response Body:** 
+  ```json
+    {
+      "message": "Unable to update person. This name has already been taken." //passed a name that already exists in the db
+    }
+  ```
   - **Status Code: `500 Internal Server Error`**
   - **Response Body:** 
   ```json
@@ -186,7 +204,7 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
   ```
 
 
-### 1. Delete a Person
+### 4. Delete a Person
 This endpoint deletes a person by its `id`.
 - **URL: `/api/:id` eg `/api/1`**
 - **Method: `DELETE`**
@@ -200,6 +218,7 @@ This endpoint deletes a person by its `id`.
       "message": "Person Deleted!"
     }
   ```
+####
 
 - **Error Responses**
   - **Status Code: `400 Bad Request`**
