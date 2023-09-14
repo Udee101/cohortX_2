@@ -1,5 +1,14 @@
 import { Request, Response,NextFunction } from "express";
 import { body, param, validationResult } from "express-validator";
+import { PersonModel } from "../models/PersonModel";
+
+export const ValidateRequestBody = (req: Request, res: Response, next: NextFunction) => {
+  const {name, ...rest} = req.body as PersonModel
+  if (Object.keys(rest).length > 0) {
+    return res.status(400).json({ error: "Unexpected properties in the request body" })
+  }
+  next()
+}
 
 export const validateRequest = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req)
