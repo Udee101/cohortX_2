@@ -32,6 +32,7 @@ Create a new `Person` by passing a `name` key value pair in the request body.
   - **Response Body:** 
   ```json
     {
+      "status_code": 201,
       "message": "Person Created!",
       "person": {
         "name": "Elon Musk",
@@ -46,7 +47,7 @@ Create a new `Person` by passing a `name` key value pair in the request body.
   - **Response Body:** 
   ```json
     {
-      "errors": [
+      "error": [
         {
           "type": "field",
           "msg": "The name field is required",
@@ -72,13 +73,15 @@ Create a new `Person` by passing a `name` key value pair in the request body.
   - **Response Body:** 
   ```json
     {
-      "message": "This person already exists" //passed a name that already exists in the db
+      "status_code": 400,
+      "error": "This person already exists" //passed a name that already exists in the db
     }
   ```
   - **Status Code: `400 Bad Request`**
   - **Response Body:** 
   ```json
     {
+      "status_code": 400,
       "error": "Unexpected properties in the request body" //passed other properties along with/without the name key value pair
     }
   ```
@@ -86,6 +89,7 @@ Create a new `Person` by passing a `name` key value pair in the request body.
   - **Response Body:** 
   ```json
     {
+      "status_code": 500,
       "error": "An error occured while creating a person.",
     }
   ```
@@ -102,8 +106,11 @@ This endpoint retrieves a person by its `id`.
   - **Response Body:** 
   ```json
     {
-      "id": 1,
-      "name": "Elon Musk"
+      "status_code": 200,
+      "person": {
+        "id": 1,
+        "name": "Elon Musk"
+      }
     }
   ```
 ####
@@ -113,7 +120,7 @@ This endpoint retrieves a person by its `id`.
   - **Response Body:** 
   ```json
     {
-      "errors": [
+      "error": [
           {
             "type": "field",
             "value": "", //passed string value as id param
@@ -128,13 +135,15 @@ This endpoint retrieves a person by its `id`.
   - **Response Body:** 
   ```json
     {
-      "message": "Person not found" //passed an id that is not present in the db
+      "status_code": 404,
+      "error": "Person not found" //passed an id that is not present in the db
     }
   ```
   - **Status Code: `500 Internal Server Error`**
   - **Response Body:** 
   ```json
     {
+      "status_code": 500,
       "error": "An error occured while retrieving person."
     }
   ```
@@ -156,6 +165,7 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
   - **Response Body:** 
   ```json
     {
+      "status_code": 200,
       "message": "Person Updated!",
       "person": {
         "id": 1,
@@ -170,7 +180,7 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
   - **Response Body:** 
   ```json
     {
-      "errors": [
+      "error": [
         {
           "type": "field",
           "value": "",//passed string value as id param
@@ -185,20 +195,23 @@ This endpoint retrieves a person by its `id` and updates the person's name by pa
   - **Response Body:** 
   ```json
     {
-      "message": "Person not found" //passed an id that is not present in the db
+      "status_code": 404,
+      "error": "Person not found" //passed an id that is not present in the db
     }
   ```
   - **Status Code: `400 Bad Request`**
   - **Response Body:** 
   ```json
     {
-      "message": "Unable to update person. This name has already been taken." //passed a name that already exists in the db
+      "status_code": 400,
+      "error": "Unable to update person. This name has already been taken." //passed a name that already exists in the db
     }
   ```
   - **Status Code: `500 Internal Server Error`**
   - **Response Body:** 
   ```json
     {
+      "status_code": 500,
       "error": "An error occured while retrieving person."
     }
   ```
@@ -215,6 +228,7 @@ This endpoint deletes a person by its `id`.
   - **Response Body:** 
   ```json
     {
+      "status_code": 200,
       "message": "Person Deleted!"
     }
   ```
@@ -240,13 +254,15 @@ This endpoint deletes a person by its `id`.
   - **Response Body:** 
   ```json
     {
-      "message": "Person not found" //passed an id that is not present in the db
+      "status_code": 404,
+      "error": "Person not found" //passed an id that is not present in the db
     }
   ```
   - **Status Code: `500 Internal Server Error`**
   - **Response Body:** 
   ```json
     {
+      "status_code": 500,
       "error": "An error occured while deleting person."
     }
   ```
